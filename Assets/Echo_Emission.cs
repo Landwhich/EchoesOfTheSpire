@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -32,6 +33,14 @@ private float rayTimer;
             if(Physics.Raycast(origin, firstPersonCamera.transform.forward, out hit, range))
             {
                 echoRay.SetPosition(1, hit.point);
+                if (hit.collider.CompareTag("Wall"))
+                {
+                    Raycast_Hit wallChange = hit.collider.GetComponent<Raycast_Hit>();
+                    if (wallChange != null)
+                    {
+                        wallChange.ChangeColour(Color.red);
+                    }
+                }
             }
             else
             {
