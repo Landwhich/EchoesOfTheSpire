@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class Raycast_Hit : MonoBehaviour
 {
-    private Renderer wallRenderer;
+    private MeshRenderer wallRenderer;
     // Start is called before the first frame update
     void Start()
     {
-        wallRenderer = GetComponent<Renderer>();
+        wallRenderer = GetComponent<MeshRenderer>();
     }
 
-    public void ChangeColour(Color newColour)
+    public void ChangeColor(Color newColor)
     {
-        if (wallRenderer != null)
+        if (wallRenderer != null && wallRenderer.material != null)
         {
-            wallRenderer.material.color = newColour;
+            wallRenderer.material.color = newColor;
         }
     }
 }

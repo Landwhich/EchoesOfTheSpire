@@ -11,6 +11,7 @@ public Transform echoRayOrigin;
 public float range;
 public float rate;
 public float echoDuration;
+    public GameObject lightPrefab;
 
 LineRenderer echoRay;
 private float rayTimer;
@@ -38,9 +39,10 @@ private float rayTimer;
                     Raycast_Hit wallChange = hit.collider.GetComponent<Raycast_Hit>();
                     if (wallChange != null)
                     {
-                        wallChange.ChangeColour(Color.red);
+                        wallChange.ChangeColor(Color.red);
                     }
                 }
+                StartCoroutine(EmitLight(hit.point));
             }
             else
             {
@@ -50,6 +52,18 @@ private float rayTimer;
         }
     }
 
+    IEnumerator EmitLight(Vector3 position) { 
+        GameObject tempLight = Instantiate(lightPrefab, position, Quaternion.identity);
+        Light lightComponent = tempLight.GetComponent<Light>();
+
+        if (lightComponent != null)
+        {
+            lightComponent.intensity = 3f;
+            lightComponent.range = 5f;
+        }
+        yield return new WaitForSeconds(1.5f);
+        Destroy(tempLight);
+    }
     IEnumerator ShootRay()
     {
         echoRay.enabled = true;
