@@ -11,7 +11,7 @@ public class Echo_Emission : MonoBehaviour
     public float range;
     public float rate;
     public float echoDuration;
-    public GameObject revealLightPrefab;  / 
+    public GameObject revealLightPrefab; 
 
     LineRenderer echoRay;
     private float rayTimer;
@@ -66,25 +66,19 @@ public class Echo_Emission : MonoBehaviour
     void IlluminateArea(Vector3 hitPoint)
     {
          
-        Vector3 randomOffset = new Vector3(
-            Random.Range(-1f, 1f),   
-            Random.Range(-1f, 1f),   
-            Random.Range(-1f, 1f)    
-        );
+        // Vector3 randomOffset = new Vector3(
+        //     Random.Range(-1f, 1f),   
+        //     Random.Range(-1f, 1f),   
+        //     Random.Range(-1f, 1f)    
+        // );
 
          
-        Vector3 lightPosition = hitPoint + randomOffset;
-
-        
+        // Vector3 lightPosition = hitPoint + randomOffset;
+        Vector3 lightPosition = hitPoint;
         GameObject lightObj = Instantiate(revealLightPrefab, lightPosition, Quaternion.identity);
-
-         
         Light revealLight = lightObj.GetComponent<Light>();
-
          
-        if (revealLight != null)
-        {
-             
+        if (revealLight != null) {
             Debug.Log("Light instantiated at: " + lightPosition);
 
             
@@ -92,10 +86,27 @@ public class Echo_Emission : MonoBehaviour
             revealLight.intensity = 15f;   
             revealLight.range = 15f;      
             revealLight.spotAngle = 60f;   
+
+            StartCoroutine(EchoDim(revealLight, echoDuration * 2));
         }
 
-         
-        Destroy(lightObj, echoDuration);
+        Destroy(lightObj, echoDuration * 2);
+
+        IEnumerator EchoDim(Light light, float duration)
+        {
+            float startIntensity = light.intensity;
+            float timeElapsed = 0f;
+
+            while (timeElapsed < duration)
+            {
+                timeElapsed += Time.deltaTime;
+                float lerpedIntensity = Mathf.Lerp(startIntensity, 0f, timeElapsed / duration);
+                light.intensity = lerpedIntensity;
+                yield return null;
+            }
+
+            light.intensity = 0f;
+        }
     }
 
 }
