@@ -11,7 +11,10 @@ public class Echo_Emission : MonoBehaviour
     public float range;
     public float rate;
     public float echoDuration;
+
     public GameObject revealLightPrefab; 
+
+ 
 
     LineRenderer echoRay;
     private float rayTimer;
