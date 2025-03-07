@@ -630,6 +630,7 @@ MonoBehaviour:
   range: 12.87
   rate: 1.48
   echoDuration: 1.09
+  lightPrefab: {fileID: 0}
 --- !u!120 &1461034429
 LineRenderer:
   serializedVersion: 2
