@@ -11,16 +11,26 @@ public class PlayerControls : MonoBehaviour
     public float mouseSens = 100f;
 
     public Transform playerBody;  // Reference to the player's body (for rotation, if needed)
+
     private float xRotation = 0f;
+
+    public Camera playerCamera;
+
     private CharacterController controller;  // Character controller for movement
 
     private Vector3 originalPosition;  // Store the original position for floating effect
+
+    public float mouseSensitivity = 100f;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         originalPosition = transform.position;
         Cursor.lockState = CursorLockMode.Locked;
+
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
@@ -49,5 +59,14 @@ public class PlayerControls : MonoBehaviour
 
         // Update the position of the cube (only the Y axis, leave X and Z unchanged)
         transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+
+        playerBody.Rotate(Vector3.up * mouseX);
+
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);  // Prevent flipping the camera
+        playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 }

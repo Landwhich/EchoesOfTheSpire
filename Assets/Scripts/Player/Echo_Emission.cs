@@ -6,15 +6,15 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class Echo_Emission : MonoBehaviour
 {
-public Camera firstPersonCamera;
-public Transform echoRayOrigin;
-public float range;
-public float rate;
-public float echoDuration;
-    public GameObject lightPrefab;
+    public Camera firstPersonCamera;
+    public Transform echoRayOrigin;
+    public float range;
+    public float rate;
+    public float echoDuration;
+    public GameObject revealLightPrefab;  / 
 
-LineRenderer echoRay;
-private float rayTimer;
+    LineRenderer echoRay;
+    private float rayTimer;
 
     // Start is called before the first frame update
     void Awake()
@@ -26,48 +26,76 @@ private float rayTimer;
     void Update()
     {
         rayTimer += Time.deltaTime;
-        if(Input.GetButtonDown("Fire1") && rayTimer > rate){
+        if (Input.GetButtonDown("Fire1") && rayTimer > rate)
+        {
             rayTimer = 0;
             echoRay.SetPosition(0, echoRayOrigin.position);
+
             Vector3 origin = firstPersonCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
-            if(Physics.Raycast(origin, firstPersonCamera.transform.forward, out hit, range))
+
+            if (Physics.Raycast(origin, firstPersonCamera.transform.forward, out hit, range))
             {
                 echoRay.SetPosition(1, hit.point);
-                if (hit.collider.CompareTag("Wall"))
-                {
-                    Raycast_Hit wallChange = hit.collider.GetComponent<Raycast_Hit>();
-                    if (wallChange != null)
-                    {
-                        wallChange.ChangeColor(Color.red);
-                    }
-                }
-                StartCoroutine(EmitLight(hit.point));
+
+                
+                Debug.Log("Ray hit: " + hit.collider.gameObject.name);
+
+                
+                IlluminateArea(hit.point);
             }
             else
             {
                 echoRay.SetPosition(1, origin + (firstPersonCamera.transform.forward * range));
+                Debug.Log("Ray did not hit anything.");
             }
+
             StartCoroutine(ShootRay());
         }
     }
 
-    IEnumerator EmitLight(Vector3 position) { 
-        GameObject tempLight = Instantiate(lightPrefab, position, Quaternion.identity);
-        Light lightComponent = tempLight.GetComponent<Light>();
-
-        if (lightComponent != null)
-        {
-            lightComponent.intensity = 3f;
-            lightComponent.range = 5f;
-        }
-        yield return new WaitForSeconds(1.5f);
-        Destroy(tempLight);
-    }
+    
     IEnumerator ShootRay()
     {
         echoRay.enabled = true;
         yield return new WaitForSeconds(echoDuration);
         echoRay.enabled = false;
     }
+
+     
+    void IlluminateArea(Vector3 hitPoint)
+    {
+         
+        Vector3 randomOffset = new Vector3(
+            Random.Range(-1f, 1f),   
+            Random.Range(-1f, 1f),   
+            Random.Range(-1f, 1f)    
+        );
+
+         
+        Vector3 lightPosition = hitPoint + randomOffset;
+
+        
+        GameObject lightObj = Instantiate(revealLightPrefab, lightPosition, Quaternion.identity);
+
+         
+        Light revealLight = lightObj.GetComponent<Light>();
+
+         
+        if (revealLight != null)
+        {
+             
+            Debug.Log("Light instantiated at: " + lightPosition);
+
+            
+            revealLight.color = Color.cyan;  
+            revealLight.intensity = 15f;   
+            revealLight.range = 15f;      
+            revealLight.spotAngle = 60f;   
+        }
+
+         
+        Destroy(lightObj, echoDuration);
+    }
+
 }
