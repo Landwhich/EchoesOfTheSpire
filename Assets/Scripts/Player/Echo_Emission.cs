@@ -36,13 +36,15 @@ public class Echo_Emission : MonoBehaviour
 
             if (Physics.Raycast(origin, firstPersonCamera.transform.forward, out hit, range))
             {
+                Vector3 hitDiff = hit.point - origin;
+                hitDiff.Normalize();
+
                 echoRay.SetPosition(1, hit.point);
 
                 
                 Debug.Log("Ray hit: " + hit.collider.gameObject.name);
-
                 
-                IlluminateArea(hit.point);
+                IlluminateArea((hit.point - (hitDiff * 0.05f)));
             }
             else
             {
@@ -83,14 +85,14 @@ public class Echo_Emission : MonoBehaviour
 
             
             revealLight.color = Color.cyan;  
-            revealLight.intensity = 15f;   
-            revealLight.range = 15f;      
-            revealLight.spotAngle = 60f;   
+            revealLight.intensity = 1f;   
+            revealLight.range = 75f;      
+            revealLight.spotAngle = 360f;   
 
-            StartCoroutine(EchoDim(revealLight, echoDuration * 2));
+            StartCoroutine(EchoDim(revealLight, echoDuration * 3));
         }
 
-        Destroy(lightObj, echoDuration * 2);
+        Destroy(lightObj, echoDuration * 3);
 
         IEnumerator EchoDim(Light light, float duration)
         {
