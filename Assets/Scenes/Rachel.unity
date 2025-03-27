@@ -256,8 +256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daca51331f942dc4f9219a41047ee564, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRadius: 5
+  attackRadius: 2
   attackDamage: 10
+  attackCooldown: 2
 --- !u!1 &124531246
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,6 +691,7 @@ GameObject:
   - component: {fileID: 824371939}
   - component: {fileID: 824371941}
   - component: {fileID: 824371940}
+  - component: {fileID: 824371942}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Player
@@ -799,7 +801,7 @@ Transform:
   m_GameObject: {fileID: 824371933}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.155, y: 0.53999996, z: -9.53}
+  m_LocalPosition: {x: 3.155, y: 0.53999996, z: -10.85}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -954,6 +956,19 @@ LineRenderer:
   m_UseWorldSpace: 1
   m_Loop: 0
   m_ApplyActiveColorSpace: 1
+--- !u!114 &824371942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824371933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fe8cdc60fbe2904f91e014f7dbae723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!1 &1099151911
 GameObject:
   m_ObjectHideFlags: 0
