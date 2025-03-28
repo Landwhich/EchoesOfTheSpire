@@ -31,5 +31,5 @@ Material:
     m_Floats:
     - _EchoDuration: -0.000014625897
     m_Colors:
-    - _Center: {r: 0.1740711, g: 12.760891, b: -0.1076216, a: 0}
+    - _Center: {r: -0.9628419, g: 11.040416, b: -0.108409844, a: 0}
   m_BuildTextureStacks: []

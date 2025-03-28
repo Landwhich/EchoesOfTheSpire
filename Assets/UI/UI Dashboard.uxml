@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="Main" style="flex-grow: 1; background-color: rgba(0, 0, 0, 0);">
+        <ui:ProgressBar value="22" style="height: 23px; width: 243px;" />
+        <ui:ProgressBar value="22" title="Beam Cooldown" style="height: 23px; width: 243px; align-self: flex-end; position: absolute; top: 0; left: 858px;" />
+        <ui:Label tabindex="-1" text="ESC to Open Pause Menu&#10;" parse-escape-sequences="true" display-tooltip-when-elided="true" style="height: 36px; width: 422px; white-space: nowrap; justify-content: space-between; align-items: center; align-self: flex-start;" />
+    </ui:VisualElement>
+</ui:UXML>
