@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(LineRenderer))]
+// [RequireComponent(typeof(LineRenderer))]
 public class Echo_Emission : MonoBehaviour
 {
     public Camera firstPersonCamera;
@@ -17,11 +17,6 @@ public class Echo_Emission : MonoBehaviour
     public Image echoCDBar;
 
     // public Transform echoCenter;
-
-    void Start()
-    {
-        // cooldownPanel.sizeDelta = emptyCD;
-    }
     // Start is called before the first frame update
     void Awake()
     {
@@ -44,9 +39,6 @@ public class Echo_Emission : MonoBehaviour
 
             Vector3 origin = firstPersonCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 0));
             RaycastHit hit;
-            
-
-
 
             if (Physics.Raycast(origin, firstPersonCamera.transform.forward, out hit, range))
             {
@@ -65,6 +57,8 @@ public class Echo_Emission : MonoBehaviour
                 Debug.Log("Ray did not hit anything.");
             }
         }
+        Debug.Log(echoMaterial.color);
+        Debug.Log("hey");
         echoMaterial.SetFloat("_EchoDuration", echoTimer);
     }
 }
