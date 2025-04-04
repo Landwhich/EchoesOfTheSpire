@@ -6,7 +6,7 @@ public class EnemyAttack : MonoBehaviour
 {
     public float attackRadius = 2f;
     public int attackDamage = 10;
-    public float attackCooldown = 2f;
+    public float attackCooldown = 1.5f;
 
     private Transform player;
     private float lastAttack = 0f;
