@@ -7,8 +7,13 @@ public class PlayerControls : MonoBehaviour
     public float speed = 5f;  // Speed of movement
     public float floatHeight = 0.05f;  // Hover range
     public float floatSpeed = 1f;  // Speed of up/down movement (slow oscillation)
+<<<<<<< HEAD
     public float moveSpeed = 12f;  // Speed of movement along X and Z axes
     public float mouseSens = 700f;
+=======
+    public float moveSpeed = 5f;  // Speed of movement along X and Z axes
+    public float mouseSensitivity = 200f;
+>>>>>>> aec62e9 (fixed mouse sens + level design)
 
     public Transform playerBody;  // Reference to the player's body (for rotation, if needed)
 
@@ -19,8 +24,6 @@ public class PlayerControls : MonoBehaviour
     private CharacterController controller;  // Character controller for movement
 
     private Vector3 originalPosition;  // Store the original position for floating effect
-
-    public float mouseSensitivity = 100f;
 
     public AudioSource audioSource;  // Reference to the AudioSource component
     public AudioClip shotSound;  // Audio clip to be played when the ray is shot
@@ -39,8 +42,8 @@ public class PlayerControls : MonoBehaviour
     void Update()
     {
         // Player Movement with WASD
-        float pitch = mouseSens * Input.GetAxis("Mouse Y") * Time.deltaTime;
-        float yaw = mouseSens * Input.GetAxis("Mouse X") * Time.deltaTime;
+        float pitch = mouseSensitivity * Input.GetAxis("Mouse Y") * Time.deltaTime;
+        float yaw = mouseSensitivity * Input.GetAxis("Mouse X") * Time.deltaTime;
 
         float moveX = Input.GetAxis("Horizontal") * moveSpeed; // Left/Right (A/D)
         float moveZ = Input.GetAxis("Vertical") * moveSpeed; // Forward/Backward (W/S)
