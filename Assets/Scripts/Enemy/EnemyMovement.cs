@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public Transform player;
-    public float speed = 3.5f;
+    public float speed = 2f;
     public float detectionRadius = 8f; // Distance at which the enemy starts chasing
     private bool isChasing = false;
 
