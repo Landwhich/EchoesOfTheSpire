@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _EchoDuration: 0
+    - _EchoDuration: -0.000014625897
     m_Colors:
-    - _Center: {r: -16.25, g: 3.1328688, b: -5.6236596, a: 0}
+    - _Center: {r: -1.1691208, g: 0.23038536, b: -52.083305, a: 0}
   m_BuildTextureStacks: []
