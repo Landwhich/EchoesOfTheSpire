@@ -51,7 +51,7 @@ Shader "Unlit/Echo_Ripple"
                 d = d<15 ? sin(d * 3.0 - (_Time.y * 6.0)) * 0.3 - 0.2 : 0;
 
                 d = smoothstep(0.0, 0.35 ,d);
-                return fixed4(d * 0.1, d * 0.1, d, 1)*_EchoDuration;
+                return fixed4(d * 0.0, d * 160.0 / 255.0, d * 255.0 / 255.0, 1) * _EchoDuration;
 
             }
             ENDCG

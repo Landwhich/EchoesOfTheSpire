@@ -30,6 +30,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _EchoDuration: -0.000014625897
+    - _Glossiness: 0.5
+    - _Metallic: 0.5
     m_Colors:
-    - _Center: {r: 40.12115, g: 0.23038536, b: -112.86328, a: 0}
+    - _Center: {r: 12.000274, g: 2.1225517, b: -5.7115135, a: 0}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
