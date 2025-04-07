@@ -14,7 +14,6 @@ public class PlayerHealth : MonoBehaviour
         curHealth = maxHealth;
     }
 
-
     void Die()
     {
         Debug.Log("Dead");
@@ -39,8 +38,13 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(int amountHeal)
     {
-        curHealth += amountHeal;
-        if (curHealth > maxHealth)
-            curHealth = maxHealth;
+        if (curHealth == maxHealth)
+            return;
+        else
+        {
+            curHealth += amountHeal;
+            if (curHealth > maxHealth)
+                curHealth = maxHealth;
+        }
     }
 }
