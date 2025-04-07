@@ -6,18 +6,28 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int curHealth;
+    public GameObject gameOverPanel;
 
 
     // Start is called before the first frame update
     void Start()
     {
         curHealth = maxHealth;
+
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(false);
     }
 
     void Die()
     {
         Debug.Log("Dead");
-        gameObject.SetActive(false);
+
+        var movement = GetComponent<PlayerControls>();
+        if (movement != null)
+            movement.enabled = false;
+
+        if (gameOverPanel != null)
+            gameOverPanel.SetActive(true);
     }
 
     public void TakeDamage(int damage)
