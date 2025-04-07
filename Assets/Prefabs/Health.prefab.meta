@@ -1,6 +1,11 @@
 fileFormatVersion: 2
-guid: d78872eeddb214d4b861bf6a1c04cab2
+<<<<<<<< HEAD:Assets/Prefabs/Health.prefab.meta
+guid: dcc86fbc15b7440c4ba13616885830a1
 PrefabImporter:
+========
+guid: d02649880218540849ec4b948483d046
+DefaultImporter:
+>>>>>>>> c96abc4 (2/4 rooms completed):Assets/Environment/Untitled.blend1.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
