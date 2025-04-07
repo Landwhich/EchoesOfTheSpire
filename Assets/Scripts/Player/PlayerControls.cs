@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    public float floatHeight = 0.05f;
-    public float floatSpeed = 1f;
+    public float floatHeight = 0.25f;
+    public float floatSpeed = 1.5f;
     public float moveSpeed = 7f;
-    public float sprintSpeed = 12f;
+    public float sprintSpeed = 10f;
     public float mouseSensitivity = 700f;
 
     public float sprintDuration = 4f;
