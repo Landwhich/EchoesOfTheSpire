@@ -18,6 +18,7 @@ public class PickupFloat : MonoBehaviour
     void Update()
     {
         // Rotate around the X-axis
+        transform.rotation = Quaternion.Euler(0f, 0f, 0f); // Lock rotation
         transform.Rotate(Vector3.right * rotationSpeed * Time.deltaTime);
 
         // Float up and down on the Y-axis

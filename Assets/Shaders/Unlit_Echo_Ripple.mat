@@ -29,19 +29,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-<<<<<<< HEAD
-    - _EchoDuration: 0.39358974
+    - _EchoDuration: -0.000014625897
     - _Glossiness: 0.5
     - _Metallic: 0.5
     m_Colors:
-    - _Center: {r: -2.0800247, g: 0.27715358, b: -17.42691, a: 0}
-=======
-    - _EchoDuration: 0.7535958
-    - _Glossiness: 0.5
-    - _Metallic: 0.5
-    m_Colors:
-    - _Center: {r: 2.6020746, g: 0.34087086, b: -28.232822, a: 0}
->>>>>>> c96abc4 (2/4 rooms completed)
+    - _Center: {r: -1.6778, g: 1.9260807, b: -10.174919, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
