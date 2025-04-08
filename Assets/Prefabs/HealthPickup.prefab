@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1903001759859305440}
   - component: {fileID: 2903971454480161541}
   - component: {fileID: 4183295631572231676}
+  - component: {fileID: 8827698118368641248}
   m_Layer: 0
   m_Name: HealthPickup
   m_TagString: Untagged
@@ -96,6 +97,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f6d3660fbcb472cb6f9bdb8a92f7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 50
   floatSpeed: 0.5
   floatHeight: 0.25
+  healthAmount: 15
+--- !u!65 &8827698118368641248
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767301429957178421}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.3698351, y: 4.3330283, z: 0.5568352}
+  m_Center: {x: 0, y: 0, z: 0}
