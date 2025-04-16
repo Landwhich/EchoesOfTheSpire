@@ -33,7 +33,7 @@ Material:
     - _Glossiness: 0.5
     - _Metallic: 0.5
     m_Colors:
-    - _Center: {r: 41.324707, g: 0.4490795, b: -137.47134, a: 0}
+    - _Center: {r: -3.7107925, g: 0.27715358, b: -22.109573, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

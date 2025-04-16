@@ -6,8 +6,8 @@ public class PlayerControls : MonoBehaviour
 {
     public float floatHeight = 0.25f;
     public float floatSpeed = 1.5f;
-    public float moveSpeed = 7f;
-    public float sprintSpeed = 10f;
+    public float moveSpeed = 3f;
+    public float sprintSpeed = 5f;
     public float mouseSensitivity = 700f;
 
     public float sprintDuration = 4f;
@@ -37,17 +37,9 @@ public class PlayerControls : MonoBehaviour
         Cursor.visible = false;
     }
 
-    void Update()
+
+    void FixedUpdate()
     {
-        // Mouse look
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-
-        playerBody.Rotate(Vector3.up * mouseX);
-        xRotation -= mouseY;
-        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-        playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
-
         // Movement input
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
@@ -62,7 +54,7 @@ public class PlayerControls : MonoBehaviour
 
         if (isSprinting)
         {
-            sprintTimer -= Time.deltaTime;
+            sprintTimer -= Time.fixedDeltaTime;
             if (sprintTimer <= 0f)
             {
                 isSprinting = false;
@@ -73,7 +65,7 @@ public class PlayerControls : MonoBehaviour
 
         if (isCooldown)
         {
-            cooldownTimer -= Time.deltaTime;
+            cooldownTimer -= Time.fixedDeltaTime;
             if (cooldownTimer <= 0f)
             {
                 isCooldown = false;
@@ -81,12 +73,23 @@ public class PlayerControls : MonoBehaviour
         }
 
         float currentSpeed = isSprinting ? sprintSpeed : moveSpeed;
-        controller.Move(moveDirection * currentSpeed * Time.deltaTime);
+        controller.Move(moveDirection * currentSpeed * Time.fixedDeltaTime);
 
         // Floating effect on Y
         Vector3 pos = transform.position;
         pos.y = originalY + Mathf.Sin(Time.time * floatSpeed) * floatHeight;
-        transform.position = pos;
+        transform.position = Vector3.Lerp(transform.position, pos, Time.fixedDeltaTime * 5f);
+    }
+    void Update()
+    {
+        // Mouse look
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.fixedDeltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.fixedDeltaTime;
+
+        playerBody.Rotate(Vector3.up * mouseX);
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        playerCamera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
 
         // Shooting
         if (Input.GetButtonDown("Fire1"))

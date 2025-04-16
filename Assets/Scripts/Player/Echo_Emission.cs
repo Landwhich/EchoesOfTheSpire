@@ -30,8 +30,8 @@ public class Echo_Emission : MonoBehaviour
     void Update()
     {
         if (echoTimer > 0.0) {echoTimer -= echoDuration;}
-        rayTimer += Time.deltaTime;
-        echoCDBar.fillAmount += Time.deltaTime / 3;
+        rayTimer += Time.fixedDeltaTime;
+        echoCDBar.fillAmount += Time.fixedDeltaTime / 3;
         if (Input.GetButtonDown("Fire1") && rayTimer > rate)
         {
             rayTimer = 0;
